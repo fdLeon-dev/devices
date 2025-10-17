@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Favicon Redondo - Devices F2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .preview-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .favicon-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .favicon-round {
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border: 2px solid #8a2be2;
+        }
+        .favicon-large {
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+            border: 3px solid #8a2be2;
+        }
+        .favicon-small {
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            object-fit: cover;
+            border: 1px solid #8a2be2;
+        }
+        h1 {
+            color: #8a2be2;
+            text-align: center;
+        }
+        .size-label {
+            font-weight: bold;
+            color: #666;
+            min-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <h1>🔵 Preview Favicon Redondo - Devices F2</h1>
+        
+        <div class="favicon-preview">
+            <span class="size-label">16x16px:</span>
+            <img src="favicon-round.jpg" alt="Favicon pequeño" class="favicon-small">
+            <span>Tamaño para pestañas del navegador</span>
+        </div>
+        
+        <div class="favicon-preview">
+            <span class="size-label">32x32px:</span>
+            <img src="favicon-round.jpg" alt="Favicon normal" class="favicon-round">
+            <span>Tamaño estándar para favicon</span>
+        </div>
+        
+        <div class="favicon-preview">
+            <span class="size-label">64x64px:</span>
+            <img src="favicon-round.jpg" alt="Favicon grande" class="favicon-large">
+            <span>Tamaño para aplicaciones móviles</span>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            ✅ Tu favicon ahora es completamente redondo y se ve profesional
+        </p>
+    </div>
+</body>
+</html>

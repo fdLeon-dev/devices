@@ -1,0 +1,15 @@
+# Avatares de Clientes
+
+Coloca aquí las fotos de perfil de los clientes para los testimonios.
+
+Formato recomendado:
+- Tamaño: 80x80px
+- Formato: JPG o PNG
+- Nombres: cliente-nombre.jpg
+
+Ejemplos:
+- carlos-mendoza.jpg
+- ana-lopez.jpg
+- miguel-rodriguez.jpg
+
+Nota: Usa fotos reales de clientes con su permiso, o fotos de stock profesionales.

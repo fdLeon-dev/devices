@@ -1,0 +1,92 @@
+{
+  "images": {
+    "avatars": {
+      "carlos-mendoza": {
+        "filename": "carlos-mendoza.jpg",
+        "alt": "Carlos Mendoza - Cliente satisfecho",
+        "description": "Cliente desde 2023 - Reparación de PC"
+      },
+      "ana-lopez": {
+        "filename": "ana-lopez.jpg",
+        "alt": "Ana López - Cliente satisfecha",
+        "description": "Cliente desde 2024 - Ensamblaje Gaming"
+      },
+      "miguel-rodriguez": {
+        "filename": "miguel-rodriguez.jpg",
+        "alt": "Miguel Rodríguez - Cliente satisfecho",
+        "description": "Cliente desde 2023 - Reparación de Laptop"
+      }
+    },
+    "works": {
+      "gaming-01": {
+        "filename": "ensamble.jpg",
+        "alt": "PC Gaming Personalizada",
+        "category": "gaming ensamblaje",
+        "description": "Ensamblaje completo de PC gaming con RTX 4070, Ryzen 7 7700X y refrigeración líquida."
+      },
+      "reparacion-01": {
+        "filename": "trabajo-reparacion-01.jpg",
+        "alt": "Reparación de Laptop",
+        "category": "reparacion",
+        "description": "Cambio de pantalla y teclado en laptop Dell Inspiron. Restauración completa del equipo."
+      },
+      "upgrade-01": {
+        "filename": "trabajo-upgrade-01.jpg",
+        "alt": "Upgrade de PC",
+        "category": "upgrade",
+        "description": "Actualización de GPU y RAM en PC de oficina. Mejora significativa en rendimiento."
+      },
+      "mantenimiento-01": {
+        "filename": "trabajo-mantenimiento-01.jpg",
+        "alt": "Mantenimiento Preventivo",
+        "category": "reparacion",
+        "description": "Limpieza profunda y optimización de sistema. PC funcionando como nueva."
+      },
+      "ensamblaje-01": {
+        "filename": "trabajo-ensamblaje-01.jpg",
+        "alt": "PC de Trabajo",
+        "category": "ensamblaje",
+        "description": "Ensamblaje de PC para trabajo profesional con procesador Intel i7 y 32GB de RAM."
+      },
+      "reparacion-02": {
+        "filename": "trabajo-reparacion-02.jpg",
+        "alt": "Reparación de Motherboard",
+        "category": "reparacion",
+        "description": "Diagnóstico y reparación de placa madre. Restauración completa de funcionalidad."
+      }
+    },
+    "logos": {
+      "main": {
+        "filename": "logo-devices-f2.svg",
+        "alt": "Devices F2 - Servicio Técnico",
+        "description": "Logo principal de Devices F2"
+      },
+      "favicon": {
+        "filename": "favicon.ico",
+        "sizes": [
+          "16x16",
+          "32x32",
+          "48x48"
+        ],
+        "description": "Favicon para el sitio web"
+      }
+    }
+  },
+  "optimization": {
+    "formats": {
+      "preferred": "WebP",
+      "fallback": "JPG",
+      "transparency": "PNG"
+    },
+    "sizes": {
+      "avatars": "80x80",
+      "works": "400x300",
+      "logos": "200x60",
+      "favicon": "32x32"
+    },
+    "compression": {
+      "quality": 85,
+      "maxFileSize": "100KB"
+    }
+  }
+}
