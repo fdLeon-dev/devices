@@ -1406,7 +1406,8 @@ body {
   color: var(--text-primary);
   padding: 40px 0;
   border-top: 1px solid var(--border-color);
-  margin-top: 80px;
+  margin-top: 0;
+  width: 100%;
 }
 
 .footer-content {
