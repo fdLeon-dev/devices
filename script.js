@@ -173,7 +173,7 @@ function sendToWhatsApp(data) {
     `Teléfono: ${data.phone}\n` +
     `Mensaje: ${data.message}`;
 
-  const whatsappUrl = `https://wa.me/525512345678?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/59892803418?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank');
 }
 
@@ -569,7 +569,7 @@ function openWhatsAppQuote() {
     `🛡️ Garantía: ${warrantyText}\n\n` +
     `¿Podrían darme más información sobre el proceso y precios?`;
 
-  const whatsappUrl = `https://wa.me/525512345678?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/59892803418?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank');
 
   // Track event
