@@ -48,6 +48,7 @@ function initializeApp() {
   initializeCalculator();
   initializeWorkFilters();
   initializeStats();
+  initializeWhatsApp();
 }
 
 // Theme Toggle

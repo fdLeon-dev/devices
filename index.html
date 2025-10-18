@@ -41,542 +41,683 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#inicio" class="nav-logo">
-        <img src="public/images/logos/logo-devices-f2.jpg" alt="Devices F2" class="nav-logo-img">
-        <span>Devices F2</span>
-      </a>
-      <div class="nav-menu" id="nav-menu">
-        <a href="#servicios" class="nav-link">Servicios</a>
-        <a href="#trabajos" class="nav-link">Trabajos</a>
-        <a href="#cotizar" class="nav-link">Cotizar</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
+  <main class="main-content">
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="#inicio" class="nav-logo">
+          <img src="public/images/logos/logo-devices-f2.jpg" alt="Devices F2" class="nav-logo-img">
+          <span>Devices F2</span>
+        </a>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#servicios" class="nav-link">Servicios</a>
+          <a href="#trabajos" class="nav-link">Trabajos</a>
+          <a href="#cotizar" class="nav-link">Cotizar</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="theme-toggle" id="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </div>
       </div>
-      <div class="nav-toggle" id="nav-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <div class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-moon"></i>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero Section -->
-  <section id="inicio" class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <h1 class="hero-title">Tu PC como nueva</h1>
-        <p class="hero-subtitle">Servicio técnico profesional de reparación y ensamblaje de computadoras. Soluciones
-          rápidas y confiables para tu equipo.</p>
-        <div class="hero-buttons">
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">Tu PC como nueva</h1>
+          <p class="hero-subtitle">Servicio técnico profesional de reparación y ensamblaje de computadoras. Soluciones
+            rápidas y confiables para tu equipo.</p>
+          <div class="hero-buttons">
           <a href="#cotizar" class="btn btn-primary">Cotizar Ahora</a>
+          <a href="https://wa.me/59892803418?text=Hola!%20Quiero%20cotizar%20un%20servicio%20técnico" class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
           <a href="#servicios" class="btn btn-secondary">Ver Servicios</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-graphic">
+            <img src="public/images/avatars/avatar.png" alt="Avatar" class="hero-avatar-overlay">
+          </div>
         </div>
       </div>
-      <div class="hero-image">
-        <div class="hero-graphic">
-          <img src="public/images/works/pc.png" alt="Devices F2 - Servicio Técnico" class="hero-main-image">
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Servicios Section -->
-  <section id="servicios" class="services">
-    <div class="container">
-      <div class="section-header">
-        <h2>Nuestros Servicios</h2>
-        <p>Soluciones completas para todas tus necesidades tecnológicas</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-wrench"></i>
-          </div>
-          <h3>Reparación</h3>
-          <p>Diagnóstico y reparación de hardware y software. Solucionamos cualquier problema de tu computadora.</p>
+    <!-- Servicios Section -->
+    <section id="servicios" class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nuestros Servicios</h2>
+          <p>Soluciones completas para todas tus necesidades tecnológicas</p>
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-arrow-up"></i>
+        <div class="services-grid">
+          <div class="service-card reparacion-card">
+            <div class="service-image">
+              <img src="public/images/services/reparacion.jpg" alt="Reparación de Hardware" class="reparacion-main"
+                loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="public/images/services/after-reparacion.jpg" alt="Después de la Reparación"
+                class="reparacion-hover" loading="lazy" onerror="this.style.display='none';">
+              <div class="service-icon" style="display: none;">
+                <i class="fas fa-wrench"></i>
+              </div>
+            </div>
+            <h3>Reparación</h3>
+            <p>Diagnóstico y reparación de hardware y software. Solucionamos cualquier problema de tu computadora.</p>
           </div>
-          <h3>Upgrade</h3>
-          <p>Mejora el rendimiento de tu PC con las mejores piezas y componentes del mercado.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-puzzle-piece"></i>
+          <div class="service-card upgrade-card">
+            <div class="service-image">
+              <img src="public/images/services/update.jpg" alt="Upgrade de PC" class="upgrade-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="public/images/services/after-update.jpg" alt="Después del Upgrade" class="upgrade-hover"
+                loading="lazy" onerror="this.style.display='none';">
+              <div class="service-icon" style="display: none;">
+                <i class="fas fa-arrow-up"></i>
+              </div>
+            </div>
+            <h3>Upgrade</h3>
+            <p>Mejora el rendimiento de tu PC con las mejores piezas y componentes del mercado.</p>
           </div>
-          <h3>Ensamblaje</h3>
-          <p>PCs personalizadas desde cero. Te ayudamos a elegir los componentes perfectos para ti.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i class="fas fa-shield-alt"></i>
+          <div class="service-card ensamblaje-card">
+            <div class="service-image">
+              <img src="public/images/services/ensamble.jpg" alt="Ensamblaje de PC" class="ensamblaje-main"
+                loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="public/images/services/gestion.jpg" alt="Gestión de Ensamblaje" class="ensamblaje-hover"
+                loading="lazy" onerror="this.style.display='none';">
+              <div class="service-icon" style="display: none;">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+            </div>
+            <h3>Ensamblaje</h3>
+            <p>PCs personalizadas desde cero. Te ayudamos a elegir los componentes perfectos para ti.</p>
           </div>
-          <h3>Mantenimiento</h3>
-          <p>Mantenimiento preventivo y limpieza profunda para mantener tu PC en óptimas condiciones.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="service-card mantenimiento-card">
+            <div class="service-image">
+              <img src="public/images/services/mantenimiento.jpg" alt="Mantenimiento de PC" class="mantenimiento-main"
+                loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="public/images/services/after-mantenimiento.jpg" alt="Después del Mantenimiento"
+                class="mantenimiento-hover" loading="lazy" onerror="this.style.display='none';">
+              <div class="service-icon" style="display: none;">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+            </div>
+            <h3>Mantenimiento</h3>
+            <p>Mantenimiento preventivo y limpieza profunda para mantener tu PC en óptimas condiciones.</p>
+          </div>
 
-  <!-- Testimonios Section -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <h2>Lo que dicen nuestros clientes</h2>
-        <p>Testimonios reales de clientes satisfechos</p>
-      </div>
-      <div class="testimonials-carousel">
-        <div class="testimonial-slide active">
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              <i class="fas fa-quote-left"></i>
-              <p>"Excelente servicio, mi PC quedó como nueva. Muy profesionales y rápidos en la entrega. Definitivamente
-                los recomiendo."</p>
-            </div>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="public/images/avatars/carlos-mendoza.jpg" alt="Carlos M." loading="lazy"
-                  onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'">
-              </div>
-              <div class="author-info">
-                <h4>Carlos Mendoza</h4>
-                <span>Cliente desde 2023</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
+          <!-- Soporte Técnico Remoto -->
+          <div class="service-card remoto-card">
+            <div class="service-image">
+              <img src="public/images/services/remote.avif" alt="Soporte Técnico Remoto" class="remoto-main"
+                loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <img src="public/images/services/after-remoto.jpg" alt="Después del Soporte Remoto" class="remoto-hover"
+                loading="lazy" onerror="this.style.display='none';">
+              <div class="service-icon" style="display: none;">
+                <i class="fas fa-laptop"></i>
               </div>
             </div>
+            <h3>Soporte Remoto</h3>
+            <p>Asistencia técnica a distancia para resolver problemas de software, configuración y optimización sin
+              necesidad de desplazarte.</p>
           </div>
-        </div>
-        <div class="testimonial-slide">
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              <i class="fas fa-quote-left"></i>
-              <p>"Armaron mi PC gaming perfectamente. Me ayudaron a elegir los componentes ideales para mi presupuesto.
-                ¡Increíble trabajo!"</p>
-            </div>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="public/images/avatars/ana-lopez.jpg" alt="Ana L." loading="lazy"
-                  onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face'">
-              </div>
-              <div class="author-info">
-                <h4>Ana López</h4>
-                <span>Cliente desde 2024</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-slide">
-          <div class="testimonial-content">
-            <div class="testimonial-text">
-              <i class="fas fa-quote-left"></i>
-              <p>"Mi laptop estaba muy lenta y pensé que ya no tenía arreglo. La dejaron funcionando perfectamente.
-                ¡Gracias!"</p>
-            </div>
-            <div class="testimonial-author">
-              <div class="author-avatar">
-                <img src="public/images/avatars/miguel-rodriguez.jpg" alt="Miguel R." loading="lazy"
-                  onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face'">
-              </div>
-              <div class="author-info">
-                <h4>Miguel Rodríguez</h4>
-                <span>Cliente desde 2023</span>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-controls">
-        <button class="testimonial-prev" id="testimonial-prev">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="testimonial-dots">
-          <span class="dot active" data-slide="0"></span>
-          <span class="dot" data-slide="1"></span>
-          <span class="dot" data-slide="2"></span>
-        </div>
-        <button class="testimonial-next" id="testimonial-next">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
 
-  <!-- Calculadora de Presupuesto Section -->
-  <section class="calculator">
-    <div class="container">
-      <div class="section-header">
-        <h2>Calculadora de Presupuesto</h2>
-        <p>Obtén una estimación rápida del costo de tu servicio</p>
-      </div>
-      <div class="calculator-container">
-        <div class="calculator-form">
-          <div class="form-group">
-            <label for="service-type">Tipo de Servicio</label>
-            <select id="service-type" name="service-type">
-              <option value="">Selecciona un servicio</option>
-              <option value="reparacion-basica" data-price="500">Reparación Básica</option>
-              <option value="reparacion-avanzada" data-price="1200">Reparación Avanzada</option>
-              <option value="upgrade-ram" data-price="800">Upgrade de RAM</option>
-              <option value="upgrade-gpu" data-price="2000">Upgrade de GPU</option>
-              <option value="upgrade-completo" data-price="3500">Upgrade Completo</option>
-              <option value="ensamblaje-basico" data-price="2500">Ensamblaje Básico</option>
-              <option value="ensamblaje-gaming" data-price="5000">Ensamblaje Gaming</option>
-              <option value="mantenimiento" data-price="300">Mantenimiento</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="urgency">Urgencia</label>
-            <select id="urgency" name="urgency">
-              <option value="normal" data-multiplier="1">Normal (3-5 días)</option>
-              <option value="urgent" data-multiplier="1.5">Urgente (1-2 días)</option>
-              <option value="express" data-multiplier="2">Express (mismo día)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="warranty">Garantía</label>
-            <select id="warranty" name="warranty">
-              <option value="30" data-price="0">30 días (incluida)</option>
-              <option value="90" data-price="200">90 días (+$200)</option>
-              <option value="180" data-price="400">6 meses (+$400)</option>
-              <option value="365" data-price="600">1 año (+$600)</option>
-            </select>
-          </div>
-        </div>
-        <div class="calculator-result">
-          <div class="result-card">
-            <h3>Estimación de Costo</h3>
-            <div class="price-breakdown">
-              <div class="price-item">
-                <span>Servicio base:</span>
-                <span id="base-price">$0</span>
-              </div>
-              <div class="price-item">
-                <span>Urgencia:</span>
-                <span id="urgency-price">$0</span>
-              </div>
-              <div class="price-item">
-                <span>Garantía:</span>
-                <span id="warranty-price">$0</span>
-              </div>
-              <div class="price-divider"></div>
-              <div class="price-total">
-                <span>Total estimado:</span>
-                <span id="total-price">$0</span>
+          <!-- Asesoramiento Técnico -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-user-tie"></i>
               </div>
             </div>
-            <p class="price-note">* Precio estimado. El costo final puede variar según el diagnóstico.</p>
-            <button class="btn btn-primary" onclick="openWhatsAppQuote()">
-              <i class="fab fa-whatsapp"></i>
-              Cotizar por WhatsApp
-            </button>
+            <h3>Asesoramiento Técnico</h3>
+            <p>Consultoría especializada para ayudarte a elegir la mejor configuración y componentes para tus
+              necesidades.</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Trabajos Section -->
-  <section id="trabajos" class="works">
-    <div class="container">
-      <div class="section-header">
-        <h2>Nuestros Trabajos</h2>
-        <p>Algunos de los proyectos que hemos realizado</p>
-      </div>
-      <div class="works-filters">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="gaming">Gaming</button>
-        <button class="filter-btn" data-filter="reparacion">Reparación</button>
-        <button class="filter-btn" data-filter="upgrade">Upgrade</button>
-        <button class="filter-btn" data-filter="ensamblaje">Ensamblaje</button>
-      </div>
-      <div class="works-grid">
-        <div class="work-card" data-category="gaming ensamblaje">
-          <div class="work-image">
-            <img src="public/images/works/pc2.png" alt="PC Gaming Personalizada" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
+          <!-- Instalación de Software -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-download"></i>
+              </div>
             </div>
+            <h3>Instalación de Software</h3>
+            <p>Instalación profesional de programas, drivers y aplicaciones con configuración optimizada.</p>
           </div>
-          <div class="work-content">
-            <h3>PC Gaming Personalizada</h3>
-            <p>Ensamblaje completo de PC gaming con RTX 4070, Ryzen 7 7700X y refrigeración líquida.</p>
-            <div class="work-tags">
-              <span class="tag">Gaming</span>
-              <span class="tag">Ensamblaje</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card" data-category="reparacion">
-          <div class="work-image">
-            <img src="public/images/works/trabajo-reparacion-01.jpg" alt="Reparación de Laptop" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-          <div class="work-content">
-            <h3>Reparación de Laptop</h3>
-            <p>Cambio de pantalla y teclado en laptop Dell Inspiron. Restauración completa del equipo.</p>
-            <div class="work-tags">
-              <span class="tag">Reparación</span>
-              <span class="tag">Laptop</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card" data-category="upgrade">
-          <div class="work-image">
-            <img src="public/images/works/trabajo-upgrade-01.jpg" alt="Upgrade de PC" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-          <div class="work-content">
-            <h3>Upgrade de PC</h3>
-            <p>Actualización de GPU y RAM en PC de oficina. Mejora significativa en rendimiento.</p>
-            <div class="work-tags">
-              <span class="tag">Upgrade</span>
-              <span class="tag">GPU</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card" data-category="reparacion">
-          <div class="work-image">
-            <img src="public/images/works/trabajo-mantenimiento-01.jpg" alt="Mantenimiento Preventivo" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-          <div class="work-content">
-            <h3>Mantenimiento Preventivo</h3>
-            <p>Limpieza profunda y optimización de sistema. PC funcionando como nueva.</p>
-            <div class="work-tags">
-              <span class="tag">Mantenimiento</span>
-              <span class="tag">Limpieza</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card" data-category="ensamblaje">
-          <div class="work-image">
-            <img src="public/images/works/trabajo-ensamblaje-01.jpg" alt="PC de Trabajo" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-          <div class="work-content">
-            <h3>PC de Trabajo</h3>
-            <p>Ensamblaje de PC para trabajo profesional con procesador Intel i7 y 32GB de RAM.</p>
-            <div class="work-tags">
-              <span class="tag">Ensamblaje</span>
-              <span class="tag">Profesional</span>
-            </div>
-          </div>
-        </div>
-        <div class="work-card" data-category="reparacion">
-          <div class="work-image">
-            <img src="public/images/works/trabajo-reparacion-02.jpg" alt="Reparación de Motherboard" loading="lazy"
-              onerror="this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop'">
-            <div class="work-overlay">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-          <div class="work-content">
-            <h3>Reparación de Motherboard</h3>
-            <p>Diagnóstico y reparación de placa madre. Restauración completa de funcionalidad.</p>
-            <div class="work-tags">
-              <span class="tag">Reparación</span>
-              <span class="tag">Hardware</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Cotizar Section -->
-  <section id="cotizar" class="quote">
-    <div class="container">
-      <div class="quote-container">
-        <div class="quote-content">
-          <h2>Solicita tu Cotización</h2>
-          <p>Completa el formulario y te contactaremos en menos de 24 horas con una cotización personalizada.</p>
-        </div>
-        <form class="quote-form" id="quote-form">
-          <div class="form-group">
-            <label for="name">Nombre completo</label>
-            <input type="text" id="name" name="name" required>
+          <!-- Recuperación de Datos -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-database"></i>
+              </div>
+            </div>
+            <h3>Recuperación de Datos</h3>
+            <p>Recuperamos archivos perdidos, fotos y documentos importantes de discos dañados o formateados.</p>
           </div>
-          <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone" required>
-          </div>
-          <div class="form-group">
-            <label for="service">Tipo de servicio</label>
-            <select id="service" name="service" required>
-              <option value="">Selecciona un servicio</option>
-              <option value="reparacion">Reparación</option>
-              <option value="upgrade">Upgrade</option>
-              <option value="ensamblaje">Ensamblaje</option>
-              <option value="mantenimiento">Mantenimiento</option>
-              <option value="otro">Otro</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Describe tu problema o necesidad</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Enviar Cotización</button>
-        </form>
-      </div>
-    </div>
-  </section>
 
-  <!-- Estadísticas Section -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="fas fa-desktop"></i>
+          <!-- Configuración de Red -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-wifi"></i>
+              </div>
+            </div>
+            <h3>Configuración de Red</h3>
+            <p>Configuración de routers, WiFi, redes domésticas y soluciones de conectividad.</p>
           </div>
-          <div class="stat-number" data-target="500">0</div>
-          <div class="stat-label">PCs Reparadas</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="stat-number" data-target="300">0</div>
-          <div class="stat-label">Clientes Satisfechos</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="fas fa-tools"></i>
-          </div>
-          <div class="stat-number" data-target="5">0</div>
-          <div class="stat-label">Años de Experiencia</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon">
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="stat-number" data-target="98">0</div>
-          <div class="stat-label">% Satisfacción</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contacto Section -->
-  <section id="contacto" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <h2>Contacto</h2>
-        <p>Estamos aquí para ayudarte con tu equipo</p>
+          <!-- Limpieza Profunda -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-broom"></i>
+              </div>
+            </div>
+            <h3>Limpieza Profunda</h3>
+            <p>Limpieza física completa del hardware y optimización del sistema operativo.</p>
+          </div>
+
+          <!-- Diagnóstico Completo -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+            <h3>Diagnóstico Completo</h3>
+            <p>Análisis detallado del sistema para identificar problemas y optimizar el rendimiento.</p>
+          </div>
+
+          <!-- Optimización de Sistema -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-tachometer-alt"></i>
+              </div>
+            </div>
+            <h3>Optimización de Sistema</h3>
+            <p>Mejora del rendimiento general del sistema para que funcione más rápido y eficientemente.</p>
+          </div>
+
+          <!-- Backup de Datos -->
+          <div class="service-card">
+            <div class="service-image">
+              <div class="service-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+            </div>
+            <h3>Backup de Datos</h3>
+            <p>Respaldo seguro de toda tu información importante para protegerla de pérdidas.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <div>
-              <h3>Teléfono</h3>
-              <p>+52 55 1234 5678</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <div>
-              <h3>Email</h3>
-              <p>contacto@devicesf2.com</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-              <h3>Ubicación</h3>
-              <p>Ciudad de México, México</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-clock"></i>
-            <div>
-              <h3>Horarios</h3>
-              <p>Lun - Vie: 9:00 - 18:00<br>Sáb: 9:00 - 14:00</p>
-            </div>
-          </div>
-          <div class="contact-social">
-            <h3>Síguenos</h3>
-            <div class="social-links">
-              <a href="https://instagram.com/devices_.f2" target="_blank" rel="noopener">
+    </section>
+
+    <!-- Testimonios Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>Lo que dicen nuestros clientes</h2>
+          <p>Testimonios reales de clientes satisfechos</p>
+        </div>
+        <div class="testimonials-carousel">
+          <div class="testimonial-slide active">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
                 <i class="fab fa-instagram"></i>
-                <span>Instagram</span>
-              </a>
-              <a href="https://facebook.com/devicesf2" target="_blank" rel="noopener">
-                <i class="fab fa-facebook"></i>
-                <span>Facebook</span>
-              </a>
-              <a href="https://wa.me/525512345678" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i>
-                <span>WhatsApp</span>
-              </a>
+                <p>"El número 1"</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="public/images/clientes/izcua.jpg" alt="@franizcua" loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'">
+                </div>
+                <div class="author-info">
+                  <h4>@franizcua</h4>
+                  <span>Hace 27 semanas</span>
+                  <div class="rating">
+                    <i class="fas fa-heart"></i>
+                    <span>1 Me gusta</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                <i class="fab fa-instagram"></i>
+                <p>"Buen trabajo 🔥"</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="public/images/clientes/pablo.jpg" alt="@pabolarrechart" loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face'">
+                </div>
+                <div class="author-info">
+                  <h4>@pabolarrechart</h4>
+                  <span>Hace 57 semanas</span>
+                  <div class="rating">
+                    <i class="fas fa-heart"></i>
+                    <span>1 Me gusta</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-slide">
+            <div class="testimonial-content">
+              <div class="testimonial-text">
+                <i class="fab fa-instagram"></i>
+                <p>"Excelente trabajo! Mi PC quedó perfecta 🔥"</p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">
+                  <img src="public/images/clientes/andres.jpg" alt="@andres__figueredo" loading="lazy"
+                    onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face'">
+                </div>
+                <div class="author-info">
+                  <h4>@andres__figueredo</h4>
+                  <span>Hace 2 semanas</span>
+                  <div class="rating">
+                    <i class="fas fa-heart"></i>
+                    <span>3 Me gusta</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="contact-map">
-          <h3>Nuestra Ubicación</h3>
-          <div class="map-container">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.8888!2d-99.1332!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDI1JzU3LjQiTiA5OcKwMDcnNTkuNSJX!5e0!3m2!1ses!2smx!4v1234567890"
-              width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+        <div class="testimonial-controls">
+          <button class="testimonial-prev" id="testimonial-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="testimonial-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
           </div>
-          <div class="map-info">
-            <p><i class="fas fa-map-marker-alt"></i> Av. Reforma 123, Col. Centro, CDMX</p>
-            <p><i class="fas fa-subway"></i> Metro Zócalo (Línea 2)</p>
+          <button class="testimonial-next" id="testimonial-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora de Presupuesto Section -->
+    <section class="calculator">
+      <div class="container">
+        <div class="section-header">
+          <h2>Calculadora de Presupuesto</h2>
+          <p>Obtén una estimación rápida del costo de tu servicio</p>
+        </div>
+        <div class="calculator-container">
+          <div class="calculator-form">
+            <div class="form-group">
+              <label for="service-type">Tipo de Servicio</label>
+              <select id="service-type" name="service-type">
+                <option value="">Selecciona un servicio</option>
+                <option value="reparacion-basica" data-price="500">Reparación Básica</option>
+                <option value="reparacion-avanzada" data-price="1200">Reparación Avanzada</option>
+                <option value="upgrade-ram" data-price="800">Upgrade de RAM</option>
+                <option value="upgrade-gpu" data-price="2000">Upgrade de GPU</option>
+                <option value="upgrade-completo" data-price="3500">Upgrade Completo</option>
+                <option value="ensamblaje-basico" data-price="1500">Ensamblaje Básico</option>
+                <option value="ensamblaje-gaming" data-price="2500">Ensamblaje Gaming</option>
+                <option value="mantenimiento" data-price="300">Mantenimiento</option>
+                <option value="asesoramiento" data-price="200">Asesoramiento Técnico</option>
+                <option value="soporte-remoto" data-price="400">Soporte Técnico Remoto</option>
+                <option value="instalacion-software" data-price="150">Instalación de Software</option>
+                <option value="recuperacion-datos" data-price="800">Recuperación de Datos</option>
+                <option value="configuracion-red" data-price="300">Configuración de Red</option>
+                <option value="limpieza-profunda" data-price="250">Limpieza Profunda</option>
+                <option value="diagnostico-completo" data-price="100">Diagnóstico Completo</option>
+                <option value="optimizacion-sistema" data-price="350">Optimización de Sistema</option>
+                <option value="backup-datos" data-price="200">Backup de Datos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="urgency">Urgencia</label>
+              <select id="urgency" name="urgency">
+                <option value="normal" data-multiplier="1">Normal (3-5 días)</option>
+                <option value="urgent" data-multiplier="1.5">Urgente (1-2 días)</option>
+                <option value="express" data-multiplier="2">Express (mismo día)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="warranty">Garantía</label>
+              <select id="warranty" name="warranty">
+                <option value="30" data-price="0">30 días (incluida)</option>
+                <option value="90" data-price="200">90 días (+$200)</option>
+                <option value="180" data-price="400">6 meses (+$400)</option>
+                <option value="365" data-price="600">1 año (+$600)</option>
+              </select>
+            </div>
+          </div>
+          <div class="calculator-result">
+            <div class="result-card">
+              <h3>Estimación de Costo</h3>
+              <div class="price-breakdown">
+                <div class="price-item">
+                  <span>Servicio base:</span>
+                  <span id="base-price">$0</span>
+                </div>
+                <div class="price-item">
+                  <span>Urgencia:</span>
+                  <span id="urgency-price">$0</span>
+                </div>
+                <div class="price-item">
+                  <span>Garantía:</span>
+                  <span id="warranty-price">$0</span>
+                </div>
+                <div class="price-divider"></div>
+                <div class="price-total">
+                  <span>Total estimado:</span>
+                  <span id="total-price">$0</span>
+                </div>
+              </div>
+              <p class="price-note">* Precio estimado. El costo final puede variar según el diagnóstico.</p>
+              <button class="btn btn-primary" onclick="openWhatsAppQuote()">
+                <i class="fab fa-whatsapp"></i>
+                Cotizar por WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Trabajos Section -->
+    <section id="trabajos" class="works">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nuestros Trabajos</h2>
+          <p>Algunos de los proyectos que hemos realizado</p>
+        </div>
+        <div class="works-filters">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="gaming">Gaming</button>
+          <button class="filter-btn" data-filter="reparacion">Reparación</button>
+          <button class="filter-btn" data-filter="upgrade">Upgrade</button>
+          <button class="filter-btn" data-filter="ensamblaje">Ensamblaje</button>
+        </div>
+        <div class="works-grid">
+          <div class="work-card" data-category="gaming ensamblaje">
+            <div class="work-image">
+              <img src="public/images/works/pc2.jpg" alt="PC Gaming Personalizada" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>PC Gaming Personalizada</h3>
+              <p>Ensamblaje completo de PC gaming personalizada con las especializaciones que el cliente solicite.</p>
+              <div class="work-tags">
+                <span class="tag">Gaming</span>
+                <span class="tag">Ensamblaje</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-card" data-category="reparacion upgrade">
+            <div class="work-image">
+              <img src="public/images/laptop.jpg" alt="Reparación de Laptop" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>Reparación de Laptop</h3>
+              <p>Cambio de pantalla, teclado y disco duro por SSD en laptop Acer. Restauración completa del equipo.</p>
+              <div class="work-tags">
+                <span class="tag">Reparación</span>
+                <span class="tag">Upgrade</span>
+                <span class="tag">Laptop</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-card" data-category="upgrade">
+            <div class="work-image">
+              <img src="public/images/works/after-mantenimiento.jpg" alt="Upgrade de PC" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>Upgrade de PC</h3>
+              <p>Actualización de GPU y RAM en PC de oficina. Mejora significativa en rendimiento.</p>
+              <div class="work-tags">
+                <span class="tag">Upgrade</span>
+                <span class="tag">GPU</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-card" data-category="reparacion upgrade">
+            <div class="work-image">
+              <img src="public/images/works/giga.jpg" alt="Mantenimiento Preventivo" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>Mantenimiento Preventivo</h3>
+              <p>Limpieza profunda y optimización de sistema. PC funcionando como nueva.</p>
+              <div class="work-tags">
+                <span class="tag">Mantenimiento</span>
+                <span class="tag">Upgrade</span>
+                <span class="tag">Limpieza</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-card" data-category="ensamblaje gaming">
+            <div class="work-image">
+              <img src="public/images/works/trabajo-ensamblaje-01.jpg" alt="PC de Trabajo" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>PC de Trabajo</h3>
+              <p>PC profesional de alto rendimiento optimizada para programación y edición de video.</p>
+              <div class="work-tags">
+                <span class="tag">Ensamblaje</span>
+                <span class="tag">Gaming</span>
+                <span class="tag">Profesional</span>
+              </div>
+            </div>
+          </div>
+          <div class="work-card" data-category="reparacion upgrade">
+            <div class="work-image">
+              <img src="public/images/works/mother.jpg" alt="Reparación de Motherboard" loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop'">
+              <div class="work-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="work-content">
+              <h3>Reparación de Motherboard</h3>
+              <p>Diagnóstico y reparación de placa madre. Restauración completa de funcionalidad.</p>
+              <div class="work-tags">
+                <span class="tag">Reparación</span>
+                <span class="tag">Upgrade</span>
+                <span class="tag">Hardware</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cotizar Section -->
+    <section id="cotizar" class="quote">
+      <div class="container">
+        <div class="quote-container">
+          <div class="quote-content">
+            <h2>Solicita tu Cotización</h2>
+            <p>Completa el formulario y te contactaremos en menos de 24 horas con una cotización personalizada.</p>
+          </div>
+          <form class="quote-form" id="quote-form">
+            <div class="form-group">
+              <label for="name">Nombre completo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Teléfono</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+              <label for="service">Tipo de servicio</label>
+              <select id="service" name="service" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="reparacion">Reparación</option>
+                <option value="upgrade">Upgrade</option>
+                <option value="ensamblaje">Ensamblaje</option>
+                <option value="mantenimiento">Mantenimiento</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Describe tu problema o necesidad</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Enviar Cotización</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estadísticas Section -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">PCs Reparadas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-number" data-target="300">0</div>
+            <div class="stat-label">Clientes Satisfechos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Años de Experiencia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-number" data-target="98">0</div>
+            <div class="stat-label">% Satisfacción</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Contacto</h2>
+          <p>Estamos aquí para ayudarte con tu equipo</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <h3>Teléfono</h3>
+                <p>+598 92 803 418</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h3>Email</h3>
+                <p>devices.f02@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <h3>Ubicación</h3>
+                <p>San Carlos, Maldonado, Uruguay</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h3>Horarios</h3>
+                <p>Lun - Vie: 9:00 - 18:00<br>Sáb: 9:00 - 14:00</p>
+              </div>
+            </div>
+            <div class="contact-social">
+              <h3>Síguenos</h3>
+              <div class="social-links">
+                <a href="https://instagram.com/devices_.f2" target="_blank" rel="noopener">
+                  <i class="fab fa-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+                <a href="https://github.com/TU_USUARIO/devices-f2" target="_blank" rel="noopener">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://wa.me/59892803418" target="_blank" rel="noopener">
+                  <i class="fab fa-whatsapp"></i>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-map">
+            <h3>Nuestra Ubicación</h3>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3270.123456789!2d-54.9167!3d-34.8000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDQ4JzAwLjAiUyA1NMKwNTUnMDAuMCJX!5e0!3m2!1ses!2suy!4v1234567890"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="map-info">
+              <p><i class="fas fa-map-marker-alt"></i> San Carlos, Maldonado, Uruguay</p>
+              <p><i class="fas fa-phone"></i> +598 92 803 418</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <!-- WhatsApp Float Button -->
-  <a href="https://wa.me/525512345678" class="whatsapp-float" target="_blank" rel="noopener">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <div class="whatsapp-container">
+    <a href="https://wa.me/59892803418?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20técnicos" class="whatsapp-float" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="whatsapp-tooltip">
+      <span>¡Cotiza tu servicio!</span>
+    </div>
+  </div>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">

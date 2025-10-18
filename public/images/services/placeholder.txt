@@ -1,0 +1,17 @@
+# Imágenes de Trabajos Realizados
+
+Coloca aquí las fotos de los trabajos realizados para la galería.
+
+Formato recomendado:
+- Tamaño: 400x300px
+- Formato: JPG (optimizado)
+- Nombres: trabajo-categoria-numero.jpg
+
+Ejemplos:
+- trabajo-gaming-01.jpg
+- trabajo-reparacion-01.jpg
+- trabajo-upgrade-01.jpg
+- trabajo-ensamblaje-01.jpg
+- trabajo-mantenimiento-01.jpg
+
+Nota: Usa fotos de alta calidad que muestren claramente el trabajo realizado.
