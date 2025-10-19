@@ -48,7 +48,6 @@ function initializeApp() {
   initializeCalculator();
   initializeWorkFilters();
   initializeStats();
-  initializeWhatsApp();
 }
 
 // Theme Toggle
@@ -769,11 +768,6 @@ function setupTestimonialForm() {
       return;
     }
 
-    if (!imageFile) {
-      showFormMessage('Por favor selecciona una foto de perfil', 'error');
-      return;
-    }
-
     if (comment.length < 10) {
       showFormMessage('El comentario debe tener al menos 10 caracteres', 'error');
       return;
@@ -785,10 +779,10 @@ function setupTestimonialForm() {
     submitBtn.disabled = true;
 
     try {
-      // Convertir imagen a base64
-      const imageBase64 = await convertImageToBase64(imageFile);
+      // Convertir imagen a base64 (si existe)
+      const imageBase64 = imageFile ? await convertImageToBase64(imageFile) : '';
 
-      // Agregar testimonio a Firebase con imagen
+      // Agregar testimonio a Firebase con o sin imagen
       const result = await agregarTestimonioConImagen(name, comment, imageBase64);
 
       if (result.success) {
