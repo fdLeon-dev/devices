@@ -612,3 +612,485 @@ document.addEventListener('DOMContentLoaded', addScrollAnimations);
 console.log('%c🚀 Devices F2 - Website Loaded Successfully!', 'color: #8a2be2; font-size: 16px; font-weight: bold;');
 console.log('%c💻 Servicio técnico profesional de computadoras', 'color: #666; font-size: 12px;');
 console.log('%c✨ Enhanced with testimonials, calculator, and filters!', 'color: #8a2be2; font-size: 12px;');
+
+// ============================================
+// Sistema de Testimonios en Tiempo Real
+// ============================================
+
+let unsubscribeTestimonios = null;
+let currentUserId = null;
+
+// Inicializar sistema de testimonios
+function initializeRealtimeTestimonials() {
+  // Obtener o generar ID de usuario
+  currentUserId = obtenerUserId();
+
+  // Intentar inicializar Firebase
+  const firebaseInitialized = initFirebase();
+
+  if (!firebaseInitialized) {
+    console.log('Firebase no configurado. El sistema de testimonios no estará disponible.');
+    showTestimonialsOfflineMessage();
+    return;
+  }
+
+  // Configurar contador de caracteres
+  setupCharacterCounter();
+
+  // Configurar carga de imagen
+  setupImageUpload();
+
+  // Configurar formulario de testimonios
+  setupTestimonialForm();
+
+  // Cargar testimonios en tiempo real
+  loadRealtimeTestimonios();
+}
+
+// Mostrar mensaje cuando Firebase no está configurado
+function showTestimonialsOfflineMessage() {
+  const container = document.getElementById('testimonials-container');
+  const loading = document.getElementById('testimonials-loading');
+
+  if (loading) loading.style.display = 'none';
+
+  if (container) {
+    container.innerHTML = `
+      <div class="testimonials-offline">
+        <i class="fas fa-exclamation-triangle"></i>
+        <h4>Sistema de testimonios no disponible</h4>
+        <p>Para habilitar los testimonios en tiempo real, configura Firebase en el archivo firebase-config.js</p>
+        <a href="https://console.firebase.google.com" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-external-link-alt"></i> Ir a Firebase Console
+        </a>
+      </div>
+    `;
+  }
+}
+
+// Configurar contador de caracteres
+function setupCharacterCounter() {
+  const textarea = document.getElementById('testimonial-comment');
+  const charCount = document.getElementById('char-count');
+
+  if (textarea && charCount) {
+    textarea.addEventListener('input', () => {
+      const count = textarea.value.length;
+      charCount.textContent = count;
+
+      // Cambiar color cuando se acerque al límite
+      if (count > 450) {
+        charCount.style.color = '#e74c3c';
+      } else if (count > 400) {
+        charCount.style.color = '#f39c12';
+      } else {
+        charCount.style.color = 'var(--text-secondary)';
+      }
+    });
+  }
+}
+
+// Configurar carga de imagen
+function setupImageUpload() {
+  const btnUpload = document.getElementById('btn-upload-image');
+  const inputFile = document.getElementById('testimonial-image');
+  const imagePreview = document.getElementById('image-preview');
+
+  if (!btnUpload || !inputFile || !imagePreview) return;
+
+  // Hacer clic en el botón abre el selector de archivos
+  btnUpload.addEventListener('click', () => {
+    inputFile.click();
+  });
+
+  // Manejar selección de archivo
+  inputFile.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    // Validar tipo de archivo
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+      showFormMessage('Por favor selecciona una imagen válida (JPG, PNG o GIF)', 'error');
+      inputFile.value = '';
+      return;
+    }
+
+    // Validar tamaño (2MB máximo)
+    const maxSize = 2 * 1024 * 1024; // 2MB en bytes
+    if (file.size > maxSize) {
+      showFormMessage('La imagen es muy grande. El tamaño máximo es 2MB', 'error');
+      inputFile.value = '';
+      return;
+    }
+
+    // Mostrar vista previa
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      imagePreview.classList.add('has-image');
+
+      // Eliminar imagen anterior si existe
+      const oldImg = imagePreview.querySelector('img');
+      if (oldImg) oldImg.remove();
+
+      // Crear nueva imagen
+      const img = document.createElement('img');
+      img.src = event.target.result;
+      img.alt = 'Vista previa';
+      imagePreview.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// Configurar formulario de testimonios
+function setupTestimonialForm() {
+  const form = document.getElementById('testimonial-form');
+
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('testimonial-name');
+    const commentInput = document.getElementById('testimonial-comment');
+    const imageInput = document.getElementById('testimonial-image');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const imagePreview = document.getElementById('image-preview');
+
+    const name = nameInput.value.trim();
+    const comment = commentInput.value.trim();
+    const imageFile = imageInput.files[0];
+
+    // Validación
+    if (!name || !comment) {
+      showFormMessage('Por favor completa todos los campos', 'error');
+      return;
+    }
+
+    if (!imageFile) {
+      showFormMessage('Por favor selecciona una foto de perfil', 'error');
+      return;
+    }
+
+    if (comment.length < 10) {
+      showFormMessage('El comentario debe tener al menos 10 caracteres', 'error');
+      return;
+    }
+
+    // Mostrar estado de carga
+    const originalHtml = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    submitBtn.disabled = true;
+
+    try {
+      // Convertir imagen a base64
+      const imageBase64 = await convertImageToBase64(imageFile);
+
+      // Agregar testimonio a Firebase con imagen
+      const result = await agregarTestimonioConImagen(name, comment, imageBase64);
+
+      if (result.success) {
+        showFormMessage('¡Gracias por tu testimonio! Se ha enviado correctamente.', 'success');
+        form.reset();
+        document.getElementById('char-count').textContent = '0';
+
+        // Resetear vista previa de imagen
+        imagePreview.classList.remove('has-image');
+        const img = imagePreview.querySelector('img');
+        if (img) img.remove();
+
+        // Track evento
+        trackEvent('testimonial_submitted', {
+          testimonial_id: result.id,
+          name_length: name.length,
+          comment_length: comment.length,
+          has_image: true
+        });
+      } else {
+        throw new Error(result.error || 'Error al enviar testimonio');
+      }
+    } catch (error) {
+      console.error('Error al enviar testimonio:', error);
+      showFormMessage('Hubo un error al enviar tu testimonio. Por favor intenta nuevamente.', 'error');
+    } finally {
+      // Restaurar botón
+      submitBtn.innerHTML = originalHtml;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+// Convertir imagen a base64
+function convertImageToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// Agregar testimonio con imagen
+async function agregarTestimonioConImagen(nombre, comentario, imageBase64) {
+  try {
+    const testimonio = {
+      nombre: nombre,
+      comentario: comentario,
+      imagen: imageBase64,
+      likes: 0,
+      likedBy: [],
+      fecha: firebase.firestore.FieldValue.serverTimestamp(),
+      aprobado: false
+    };
+
+    const docRef = await testimoniosRef.add(testimonio);
+    console.log('Testimonio agregado con ID:', docRef.id);
+    return { success: true, id: docRef.id };
+  } catch (error) {
+    console.error('Error al agregar testimonio:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+// Mostrar mensaje del formulario
+function showFormMessage(message, type) {
+  const messageDiv = document.getElementById('form-message');
+
+  if (!messageDiv) return;
+
+  messageDiv.className = `form-message ${type}`;
+  messageDiv.innerHTML = `
+    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+    <span>${message}</span>
+  `;
+  messageDiv.style.display = 'flex';
+
+  // Auto-ocultar después de 5 segundos
+  setTimeout(() => {
+    messageDiv.style.display = 'none';
+  }, 5000);
+}
+
+// Cargar testimonios en tiempo real
+function loadRealtimeTestimonios() {
+  const container = document.getElementById('testimonials-container');
+  const loading = document.getElementById('testimonials-loading');
+  const empty = document.getElementById('testimonials-empty');
+  const countSpan = document.getElementById('testimonials-count');
+
+  if (!container) return;
+
+  // Escuchar cambios en tiempo real
+  unsubscribeTestimonios = escucharTestimonios((testimonios) => {
+    // Ocultar loading
+    if (loading) loading.style.display = 'none';
+
+    // Actualizar contador
+    if (countSpan) {
+      countSpan.textContent = testimonios.length;
+    }
+
+    // Mostrar empty state si no hay testimonios
+    if (testimonios.length === 0) {
+      if (empty) empty.style.display = 'flex';
+      // Limpiar testimonios existentes
+      const existingCards = container.querySelectorAll('.live-testimonial-card');
+      existingCards.forEach(card => card.remove());
+      return;
+    }
+
+    // Ocultar empty state
+    if (empty) empty.style.display = 'none';
+
+    // Renderizar testimonios
+    renderTestimonios(testimonios, container);
+  });
+}
+
+// Renderizar testimonios
+function renderTestimonios(testimonios, container) {
+  // Obtener IDs de testimonios actuales
+  const existingIds = Array.from(container.querySelectorAll('.live-testimonial-card'))
+    .map(card => card.dataset.id);
+
+  testimonios.forEach(testimonio => {
+    // Si el testimonio ya existe, actualizar likes
+    if (existingIds.includes(testimonio.id)) {
+      updateTestimonialLikes(testimonio);
+    } else {
+      // Crear nuevo testimonio
+      const card = createTestimonialCard(testimonio);
+      container.appendChild(card);
+
+      // Animación de entrada
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 10);
+    }
+  });
+
+  // Eliminar testimonios que ya no existen
+  const currentIds = testimonios.map(t => t.id);
+  Array.from(container.querySelectorAll('.live-testimonial-card'))
+    .forEach(card => {
+      if (!currentIds.includes(card.dataset.id)) {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(-20px)';
+        setTimeout(() => card.remove(), 300);
+      }
+    });
+}
+
+// Crear tarjeta de testimonio
+function createTestimonialCard(testimonio) {
+  const card = document.createElement('div');
+  card.className = 'live-testimonial-card';
+  card.dataset.id = testimonio.id;
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(20px)';
+  card.style.transition = 'all 0.3s ease';
+
+  const hasLiked = testimonio.likedBy && testimonio.likedBy.includes(currentUserId);
+  const fecha = formatearFecha(testimonio.fecha);
+
+  // Determinar el avatar a mostrar
+  let avatarHTML;
+  if (testimonio.imagen) {
+    avatarHTML = `<img src="${testimonio.imagen}" alt="${escapeHtml(testimonio.nombre)}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-user\\'></i>';">`;
+  } else {
+    avatarHTML = `<i class="fas fa-user"></i>`;
+  }
+
+  card.innerHTML = `
+    <div class="testimonial-header">
+      <div class="testimonial-avatar">
+        ${avatarHTML}
+      </div>
+      <div class="testimonial-info">
+        <h4>${escapeHtml(testimonio.nombre)}</h4>
+        <span class="testimonial-date">
+          <i class="fas fa-clock"></i> ${fecha}
+        </span>
+      </div>
+    </div>
+    <div class="testimonial-body">
+      <p>${escapeHtml(testimonio.comentario)}</p>
+    </div>
+    <div class="testimonial-footer">
+      <button class="like-btn ${hasLiked ? 'liked' : ''}" data-id="${testimonio.id}">
+        <i class="fas fa-heart"></i>
+        <span class="like-count">${testimonio.likes || 0}</span>
+      </button>
+    </div>
+  `;
+
+  // Agregar evento de like
+  const likeBtn = card.querySelector('.like-btn');
+  likeBtn.addEventListener('click', () => handleLike(testimonio.id));
+
+  return card;
+}
+
+// Actualizar likes de un testimonio existente
+function updateTestimonialLikes(testimonio) {
+  const card = document.querySelector(`.live-testimonial-card[data-id="${testimonio.id}"]`);
+  if (!card) return;
+
+  const likeBtn = card.querySelector('.like-btn');
+  const likeCount = card.querySelector('.like-count');
+  const hasLiked = testimonio.likedBy && testimonio.likedBy.includes(currentUserId);
+
+  if (likeBtn) {
+    likeBtn.className = `like-btn ${hasLiked ? 'liked' : ''}`;
+  }
+
+  if (likeCount) {
+    likeCount.textContent = testimonio.likes || 0;
+  }
+}
+
+// Manejar like
+async function handleLike(testimonioId) {
+  const likeBtn = document.querySelector(`.like-btn[data-id="${testimonioId}"]`);
+
+  if (!likeBtn || likeBtn.disabled) return;
+
+  // Deshabilitar botón temporalmente
+  likeBtn.disabled = true;
+
+  try {
+    const result = await toggleLike(testimonioId, currentUserId);
+
+    if (result.success) {
+      // Animación del botón
+      likeBtn.style.transform = 'scale(1.2)';
+      setTimeout(() => {
+        likeBtn.style.transform = 'scale(1)';
+      }, 200);
+
+      // Track evento
+      trackEvent('testimonial_like', {
+        testimonial_id: testimonioId,
+        action: result.hasLiked ? 'liked' : 'unliked'
+      });
+    } else {
+      throw new Error(result.error || 'Error al dar like');
+    }
+  } catch (error) {
+    console.error('Error al dar like:', error);
+    showNotification('Error al dar like. Intenta nuevamente.', 'error');
+  } finally {
+    // Habilitar botón
+    setTimeout(() => {
+      likeBtn.disabled = false;
+    }, 500);
+  }
+}
+
+// Formatear fecha relativa
+function formatearFecha(timestamp) {
+  if (!timestamp) return 'Hace un momento';
+
+  const fecha = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+  const ahora = new Date();
+  const diferencia = ahora - fecha;
+
+  const segundos = Math.floor(diferencia / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
+  const semanas = Math.floor(dias / 7);
+  const meses = Math.floor(dias / 30);
+
+  if (segundos < 60) return 'Hace un momento';
+  if (minutos < 60) return `Hace ${minutos} minuto${minutos > 1 ? 's' : ''}`;
+  if (horas < 24) return `Hace ${horas} hora${horas > 1 ? 's' : ''}`;
+  if (dias < 7) return `Hace ${dias} día${dias > 1 ? 's' : ''}`;
+  if (semanas < 4) return `Hace ${semanas} semana${semanas > 1 ? 's' : ''}`;
+  if (meses < 12) return `Hace ${meses} mes${meses > 1 ? 'es' : ''}`;
+
+  return fecha.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// Escapar HTML para prevenir XSS
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Limpiar al salir de la página
+window.addEventListener('beforeunload', () => {
+  if (unsubscribeTestimonios) {
+    unsubscribeTestimonios();
+  }
+});
+
+// Inicializar sistema de testimonios cuando cargue la página
+document.addEventListener('DOMContentLoaded', () => {
+  // Pequeño delay para asegurar que Firebase se cargue primero
+  setTimeout(initializeRealtimeTestimonials, 500);
+});

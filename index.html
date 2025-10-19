@@ -37,6 +37,10 @@
     gtag('js', new Date());
     gtag('config', 'G-69VRCVVGXD');
   </script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body>
@@ -260,92 +264,171 @@
     </section>
 
     <!-- Testimonios Section -->
-    <section class="testimonials">
+    <section class="testimonials" id="testimonios">
       <div class="container">
         <div class="section-header">
           <h2>Lo que dicen nuestros clientes</h2>
           <p>Testimonios reales de clientes satisfechos</p>
         </div>
-        <div class="testimonials-carousel">
-          <div class="testimonial-slide active">
-            <div class="testimonial-content">
-              <div class="testimonial-text">
-                <i class="fab fa-instagram"></i>
-                <p>"El número 1"</p>
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <img src="public/images/clientes/izcua.jpg" alt="@franizcua" loading="lazy"
-                    onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'">
+
+        <!-- Layout principal de testimonios -->
+        <div class="testimonials-main-layout">
+          <!-- Formulario para agregar testimonio -->
+          <div class="testimonial-form-container">
+            <div class="testimonial-form-card">
+              <h3><i class="fas fa-comment-dots"></i> Comparte tu experiencia</h3>
+              <form id="testimonial-form" class="new-testimonial-form">
+                <div class="form-row form-row-inline">
+                  <div class="form-group form-group-name">
+                    <label for="testimonial-name">
+                      <i class="fas fa-user"></i> Tu nombre
+                    </label>
+                    <input type="text" id="testimonial-name" name="name" placeholder="Ej: Juan Pérez" required
+                      maxlength="50">
+                  </div>
+
+                  <!-- Campo de imagen de perfil compacto -->
+                  <div class="form-group form-group-image">
+                    <input type="file" id="testimonial-image" name="image" accept="image/*" required hidden>
+                    <button type="button" class="btn-upload-image-compact" id="btn-upload-image"
+                      title="Agregar tu foto">
+                      <div class="image-preview-compact" id="image-preview">
+                        <i class="fas fa-camera"></i>
+                      </div>
+                    </button>
+                  </div>
                 </div>
-                <div class="author-info">
-                  <h4>@franizcua</h4>
-                  <span>Hace 27 semanas</span>
-                  <div class="rating">
-                    <i class="fas fa-heart"></i>
-                    <span>1 Me gusta</span>
+
+                <div class="form-group">
+                  <label for="testimonial-comment">
+                    <i class="fas fa-message"></i> Tu comentario
+                  </label>
+                  <textarea id="testimonial-comment" name="comment" rows="3"
+                    placeholder="Cuéntanos sobre tu experiencia con nuestro servicio..." required
+                    maxlength="500"></textarea>
+                  <div class="char-counter">
+                    <span id="char-count">0</span>/500
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-submit-testimonial">
+                  <i class="fas fa-paper-plane"></i> Enviar Testimonio
+                </button>
+              </form>
+              <div id="form-message" class="form-message"></div>
+            </div>
+          </div>
+
+          <!-- Testimonios destacados de Instagram (estáticos) -->
+          <div class="featured-testimonials">
+            <h3><i class="fab fa-instagram"></i> Destacados de Instagram</h3>
+            <div class="testimonials-carousel">
+              <div class="testimonial-slide active">
+                <div class="testimonial-content">
+                  <div class="testimonial-text">
+                    <i class="fab fa-instagram"></i>
+                    <p>"El número 1"</p>
+                  </div>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">
+                      <img src="public/images/clientes/izcua.jpg" alt="@franizcua" loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face'">
+                    </div>
+                    <div class="author-info">
+                      <h4>@franizcua</h4>
+                      <span>Hace 27 semanas</span>
+                      <div class="rating">
+                        <i class="fas fa-heart"></i>
+                        <span>1 Me gusta</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <div class="testimonial-content">
+                  <div class="testimonial-text">
+                    <i class="fab fa-instagram"></i>
+                    <p>"Buen trabajo 🔥"</p>
+                  </div>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">
+                      <img src="public/images/clientes/pablo.jpg" alt="@pabolarrechart" loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face'">
+                    </div>
+                    <div class="author-info">
+                      <h4>@pabolarrechart</h4>
+                      <span>Hace 57 semanas</span>
+                      <div class="rating">
+                        <i class="fas fa-heart"></i>
+                        <span>1 Me gusta</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-slide">
+                <div class="testimonial-content">
+                  <div class="testimonial-text">
+                    <i class="fab fa-instagram"></i>
+                    <p>"Excelente trabajo! Mi PC quedó perfecta 🔥"</p>
+                  </div>
+                  <div class="testimonial-author">
+                    <div class="author-avatar">
+                      <img src="public/images/clientes/andres.jpg" alt="@andres__figueredo" loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face'">
+                    </div>
+                    <div class="author-info">
+                      <h4>@andres__figueredo</h4>
+                      <span>Hace 2 semanas</span>
+                      <div class="rating">
+                        <i class="fas fa-heart"></i>
+                        <span>3 Me gusta</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="testimonial-text">
-                <i class="fab fa-instagram"></i>
-                <p>"Buen trabajo 🔥"</p>
+            <div class="testimonial-controls">
+              <button class="testimonial-prev" id="testimonial-prev">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <div class="testimonial-dots">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
               </div>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <img src="public/images/clientes/pablo.jpg" alt="@pabolarrechart" loading="lazy"
-                    onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face'">
-                </div>
-                <div class="author-info">
-                  <h4>@pabolarrechart</h4>
-                  <span>Hace 57 semanas</span>
-                  <div class="rating">
-                    <i class="fas fa-heart"></i>
-                    <span>1 Me gusta</span>
-                  </div>
-                </div>
-              </div>
+              <button class="testimonial-next" id="testimonial-next">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
-          <div class="testimonial-slide">
-            <div class="testimonial-content">
-              <div class="testimonial-text">
-                <i class="fab fa-instagram"></i>
-                <p>"Excelente trabajo! Mi PC quedó perfecta 🔥"</p>
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar">
-                  <img src="public/images/clientes/andres.jpg" alt="@andres__figueredo" loading="lazy"
-                    onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face'">
-                </div>
-                <div class="author-info">
-                  <h4>@andres__figueredo</h4>
-                  <span>Hace 2 semanas</span>
-                  <div class="rating">
-                    <i class="fas fa-heart"></i>
-                    <span>3 Me gusta</span>
-                  </div>
-                </div>
+
+          <!-- Lista de testimonios en tiempo real -->
+          <div class="testimonials-list">
+            <div class="testimonials-header">
+              <h3><i class="fas fa-comments"></i> Testimonios de la comunidad</h3>
+              <div class="testimonials-count">
+                <span id="testimonials-count">0</span> testimonios
               </div>
             </div>
+
+            <div id="testimonials-container" class="testimonials-grid">
+              <!-- Loading state -->
+              <div class="testimonials-loading" id="testimonials-loading">
+                <div class="loading-spinner"></div>
+                <p>Cargando testimonios...</p>
+              </div>
+
+              <!-- Empty state -->
+              <div class="testimonials-empty" id="testimonials-empty" style="display: none;">
+                <i class="fas fa-comment-slash"></i>
+                <p>Aún no hay testimonios. ¡Sé el primero en compartir tu experiencia!</p>
+              </div>
+
+              <!-- Testimonios se cargarán aquí dinámicamente -->
+            </div>
           </div>
-        </div>
-        <div class="testimonial-controls">
-          <button class="testimonial-prev" id="testimonial-prev">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <div class="testimonial-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-          </div>
-          <button class="testimonial-next" id="testimonial-next">
-            <i class="fas fa-chevron-right"></i>
-          </button>
         </div>
       </div>
     </section>
@@ -738,6 +821,7 @@
   </footer>
 
   <!-- JavaScript -->
+  <script src="firebase-config.js"></script>
   <script src="script.js"></script>
 </body>
 
