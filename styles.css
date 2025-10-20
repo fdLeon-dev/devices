@@ -1790,6 +1790,55 @@ body {
   background: var(--bg-secondary);
 }
 
+.optional-field {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.contact-requirement {
+  background: rgba(138, 43, 226, 0.08);
+  border-left: 3px solid #8a2be2;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.contact-requirement i {
+  color: #8a2be2;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
 .quote-container {
   max-width: 800px;
   margin: 0 auto;
@@ -2404,6 +2453,16 @@ body {
 
   .quote-form {
     padding: 25px;
+  }
+
+  .contact-requirement {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    margin: 12px 0;
+  }
+
+  .optional-field {
+    font-size: 0.75rem;
   }
 
   .hero-buttons {

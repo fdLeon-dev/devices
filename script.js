@@ -34,6 +34,11 @@ function initializeApp() {
   // Initialize smooth scrolling
   initializeSmoothScrolling();
 
+  // Initialize EmailJS
+  if (typeof initEmailJS !== 'undefined') {
+    initEmailJS();
+  }
+
   // Initialize form handling
   initializeFormHandling();
 
@@ -136,11 +141,37 @@ function initializeFormHandling() {
   }
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
 
   const formData = new FormData(quoteForm);
-  const data = Object.fromEntries(formData);
+  const data = {
+    nombre: formData.get('name'),
+    email: formData.get('email'),
+    telefono: formData.get('phone'),
+    servicio: formData.get('service'),
+    mensaje: formData.get('message')
+  };
+
+  // Validación básica - campos obligatorios
+  if (!data.nombre || !data.servicio || !data.mensaje) {
+    showNotification('Por favor completa todos los campos obligatorios', 'error');
+    return;
+  }
+
+  // Validación: al menos email O teléfono
+  const tieneEmail = data.email && data.email.trim() !== '';
+  const tieneTelefono = data.telefono && data.telefono.trim() !== '';
+
+  if (!tieneEmail && !tieneTelefono) {
+    showNotification('Por favor proporciona al menos un correo electrónico o teléfono', 'error');
+    highlightContactFields();
+    return;
+  }
+
+  // Limpiar valores vacíos
+  data.email = tieneEmail ? data.email.trim() : 'No proporcionado';
+  data.telefono = tieneTelefono ? data.telefono.trim() : 'No proporcionado';
 
   // Show loading state
   const submitBtn = quoteForm.querySelector('button[type="submit"]');
@@ -148,32 +179,94 @@ function handleFormSubmit(e) {
   submitBtn.innerHTML = '<span class="loading"></span> Enviando...';
   submitBtn.disabled = true;
 
-  // Simulate form submission (replace with actual API call)
-  setTimeout(() => {
-    // Show success message
-    showNotification('¡Cotización enviada! Te contactaremos pronto.', 'success');
+  try {
+    // 1. Enviar email al negocio con EmailJS
+    const emailResult = await enviarEmailCotizacion(data);
 
-    // Reset form
-    quoteForm.reset();
+    if (emailResult.success) {
+      // Show success message
+      showNotification('¡Cotización enviada! Te contactaremos pronto.', 'success');
 
+      // Reset form
+      quoteForm.reset();
+
+      // Track evento
+      trackEvent('quote_submitted', {
+        service: data.servicio,
+        method: 'email',
+        has_email: tieneEmail,
+        has_phone: tieneTelefono
+      });
+
+      // 2. Abrir WhatsApp del negocio con los datos (siempre)
+      setTimeout(() => {
+        sendToWhatsApp(data);
+      }, 1000);
+
+    } else {
+      // Si EmailJS no está configurado, usar fallback de WhatsApp
+      console.warn('EmailJS no configurado, usando fallback de WhatsApp');
+      showNotification('Te redirigimos a WhatsApp para completar tu cotización.', 'success');
+
+      // Reset form
+      quoteForm.reset();
+
+      // Enviar por WhatsApp (fallback)
+      setTimeout(() => {
+        sendToWhatsApp(data);
+      }, 1000);
+    }
+
+  } catch (error) {
+    console.error('Error al enviar cotización:', error);
+    showNotification('Hubo un error. Te redirigimos a WhatsApp.', 'error');
+
+    // Fallback: enviar por WhatsApp siempre
+    setTimeout(() => {
+      sendToWhatsApp(data);
+    }, 1000);
+  } finally {
     // Reset button
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
-
-    // Send to WhatsApp (optional)
-    sendToWhatsApp(data);
-  }, 2000);
+  }
 }
 
 function sendToWhatsApp(data) {
-  const message = `Hola! Me interesa solicitar una cotización para ${data.service}.\n\n` +
-    `Nombre: ${data.name}\n` +
+  const message = `Hola! Me interesa solicitar una cotización para ${data.servicio}.\n\n` +
+    `Nombre: ${data.nombre}\n` +
     `Email: ${data.email}\n` +
-    `Teléfono: ${data.phone}\n` +
-    `Mensaje: ${data.message}`;
+    `Teléfono: ${data.telefono}\n` +
+    `Mensaje: ${data.mensaje}`;
 
   const whatsappUrl = `https://wa.me/59892803418?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, '_blank');
+}
+
+// Resaltar campos de contacto cuando están vacíos
+function highlightContactFields() {
+  const emailInput = document.getElementById('email');
+  const phoneInput = document.getElementById('phone');
+
+  // Agregar clase de error temporalmente
+  if (emailInput) {
+    emailInput.style.borderColor = '#e74c3c';
+    emailInput.style.animation = 'shake 0.5s ease';
+  }
+
+  if (phoneInput) {
+    phoneInput.style.borderColor = '#e74c3c';
+    phoneInput.style.animation = 'shake 0.5s ease';
+  }
+
+  // Remover resaltado después de 3 segundos
+  setTimeout(() => {
+    if (emailInput) emailInput.style.borderColor = '';
+    if (phoneInput) phoneInput.style.borderColor = '';
+  }, 3000);
+
+  // Enfocar el primer campo vacío
+  if (emailInput) emailInput.focus();
 }
 
 // Mobile Menu

@@ -41,6 +41,9 @@
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -655,13 +658,17 @@
               <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-              <label for="email">Correo electrónico</label>
-              <input type="email" id="email" name="email" required>
+              <label for="email">Correo electrónico <span class="optional-field">(opcional)</span></label>
+              <input type="email" id="email" name="email" placeholder="ejemplo@mail.com">
             </div>
             <div class="form-group">
-              <label for="phone">Teléfono</label>
-              <input type="tel" id="phone" name="phone" required>
+              <label for="phone">Teléfono <span class="optional-field">(opcional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="092 XXX XXX">
             </div>
+            <p class="contact-requirement">
+              <i class="fas fa-info-circle"></i>
+              <span>Debes proporcionar al menos un correo electrónico o teléfono</span>
+            </p>
             <div class="form-group">
               <label for="service">Tipo de servicio</label>
               <select id="service" name="service" required>
@@ -822,6 +829,7 @@
 
   <!-- JavaScript -->
   <script src="firebase-config.js"></script>
+  <script src="emailjs-config.js"></script>
   <script src="script.js"></script>
 </body>
 
