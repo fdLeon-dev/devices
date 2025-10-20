@@ -90,7 +90,11 @@
         </div>
         <div class="hero-image">
           <div class="hero-graphic">
-            <img src="public/images/avatars/avatar.png" alt="Avatar" class="hero-avatar-overlay">
+            <video class="hero-avatar-overlay" autoplay loop muted playsinline>
+              <source src="public/images/logos/publicaciones.mp4" type="video/mp4">
+              <!-- Fallback si el video no carga -->
+              <img src="public/images/avatars/avatar.png" alt="Avatar">
+            </video>
           </div>
         </div>
       </div>
@@ -174,9 +178,12 @@
           </div>
 
           <!-- Asesoramiento Técnico -->
-          <div class="service-card">
+          <div class="service-card asesoramiento-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=400&fit=crop"
+                alt="Asesoramiento Técnico" class="asesoramiento-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-user-tie"></i>
               </div>
             </div>
@@ -186,9 +193,12 @@
           </div>
 
           <!-- Instalación de Software -->
-          <div class="service-card">
+          <div class="service-card software-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&h=400&fit=crop"
+                alt="Instalación de Software" class="software-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-download"></i>
               </div>
             </div>
@@ -197,9 +207,12 @@
           </div>
 
           <!-- Recuperación de Datos -->
-          <div class="service-card">
+          <div class="service-card recuperacion-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&h=400&fit=crop"
+                alt="Recuperación de Datos" class="recuperacion-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-database"></i>
               </div>
             </div>
@@ -208,9 +221,12 @@
           </div>
 
           <!-- Configuración de Red -->
-          <div class="service-card">
+          <div class="service-card red-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&h=400&fit=crop"
+                alt="Configuración de Red" class="red-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-wifi"></i>
               </div>
             </div>
@@ -219,9 +235,12 @@
           </div>
 
           <!-- Limpieza Profunda -->
-          <div class="service-card">
+          <div class="service-card limpieza-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=600&h=400&fit=crop"
+                alt="Limpieza Profunda" class="limpieza-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-broom"></i>
               </div>
             </div>
@@ -230,9 +249,12 @@
           </div>
 
           <!-- Diagnóstico Completo -->
-          <div class="service-card">
+          <div class="service-card diagnostico-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&h=400&fit=crop"
+                alt="Diagnóstico Completo" class="diagnostico-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-search"></i>
               </div>
             </div>
@@ -241,9 +263,12 @@
           </div>
 
           <!-- Optimización de Sistema -->
-          <div class="service-card">
+          <div class="service-card optimizacion-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop"
+                alt="Optimización de Sistema" class="optimizacion-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-tachometer-alt"></i>
               </div>
             </div>
@@ -252,9 +277,12 @@
           </div>
 
           <!-- Backup de Datos -->
-          <div class="service-card">
+          <div class="service-card backup-card">
             <div class="service-image">
-              <div class="service-icon">
+              <img src="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=600&h=400&fit=crop"
+                alt="Backup de Datos" class="backup-main" loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="service-icon" style="display: none;">
                 <i class="fas fa-shield-alt"></i>
               </div>
             </div>
@@ -769,10 +797,6 @@
                 <a href="https://instagram.com/devices_.f2" target="_blank" rel="noopener">
                   <i class="fab fa-instagram"></i>
                   <span>Instagram</span>
-                </a>
-                <a href="https://github.com/TU_USUARIO/devices-f2" target="_blank" rel="noopener">
-                  <i class="fab fa-github"></i>
-                  <span>GitHub</span>
                 </a>
                 <a href="https://wa.me/59892803418" target="_blank" rel="noopener">
                   <i class="fab fa-whatsapp"></i>

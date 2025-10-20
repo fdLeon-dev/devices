@@ -305,6 +305,13 @@ body {
   animation: fadeInUp 0.8s ease 0.5s both;
 }
 
+.hero-avatar-overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .hero-graphic:hover .hero-avatar-overlay {
   transform: scale(1.05);
 }
@@ -510,7 +517,15 @@ body {
 .mantenimiento-card:hover .service-image img,
 .upgrade-card:hover .service-image img,
 .remoto-card:hover .service-image img,
-.reparacion-card:hover .service-image img {
+.reparacion-card:hover .service-image img,
+.asesoramiento-card:hover .service-image img,
+.software-card:hover .service-image img,
+.recuperacion-card:hover .service-image img,
+.red-card:hover .service-image img,
+.limpieza-card:hover .service-image img,
+.diagnostico-card:hover .service-image img,
+.optimizacion-card:hover .service-image img,
+.backup-card:hover .service-image img {
   transform: none;
 }
 
