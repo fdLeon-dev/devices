@@ -2373,9 +2373,48 @@ body {
     gap: 20px;
   }
 
-  .testimonial-form-container,
+  .testimonial-form-container {
+    grid-column: 1;
+    order: 2;
+  }
+
   .featured-testimonials {
     grid-column: 1;
+    order: 1;
+  }
+
+  .calculator-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .calculator-form {
+    order: 1;
+    padding: 20px;
+  }
+
+  .calculator-result {
+    order: 2;
+  }
+
+  .result-card {
+    padding: 25px;
+  }
+
+  .result-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .price-breakdown {
+    font-size: 0.9rem;
+  }
+
+  .price-total {
+    font-size: 1.1rem;
+  }
+
+  .price-note {
+    font-size: 0.8rem;
   }
 
   .testimonial-form-card {
@@ -2458,6 +2497,10 @@ body {
     font-size: 2rem;
   }
 
+  .section-header p {
+    font-size: 0.95rem;
+  }
+
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -2467,7 +2510,40 @@ body {
   }
 
   .quote-form {
-    padding: 25px;
+    padding: 20px;
+  }
+
+  .calculator-container {
+    gap: 20px;
+  }
+
+  .calculator-form {
+    padding: 15px;
+  }
+
+  .result-card {
+    padding: 20px;
+  }
+
+  .result-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .price-breakdown {
+    font-size: 0.85rem;
+  }
+
+  .price-total {
+    font-size: 1rem;
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+  }
+
+  .result-card .btn {
+    padding: 12px;
+    font-size: 0.9rem;
   }
 
   .contact-requirement {
@@ -2497,6 +2573,58 @@ body {
 
   .image-preview-compact i {
     font-size: 1rem;
+  }
+
+  .testimonial-form-card {
+    padding: 18px;
+  }
+
+  .featured-testimonials {
+    padding: 18px;
+  }
+
+  .testimonial-content {
+    padding: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .quote-container {
+    gap: 25px;
+  }
+
+  .quote-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .quote-content p {
+    font-size: 0.95rem;
+  }
+
+  .calculator .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .calculator .section-header p {
+    font-size: 0.9rem;
+  }
+
+  .calculator-form select,
+  .calculator-form .form-group {
+    width: 100%;
+  }
+
+  .calculator-form label {
+    font-size: 0.9rem;
   }
 }
 
