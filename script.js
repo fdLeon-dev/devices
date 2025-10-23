@@ -1176,7 +1176,6 @@ window.addEventListener('beforeunload', () => {
   }
 });
 
-// Inicializar sistema de testimonios cuando cargue la página
 document.addEventListener('DOMContentLoaded', () => {
   // Pequeño delay para asegurar que Firebase se cargue primero
   setTimeout(initializeRealtimeTestimonials, 500);
